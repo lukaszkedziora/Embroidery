@@ -56,7 +56,7 @@ You'll have to:
     - There are no completely empty rows or columns in the returned matrix.
     - The function provides reasonable answers to edge cases (all combinations of integers as parameters).
 
-3. Implement the `draw_triangle(blocks)` function to return arrays like this (when `blocks == 4`):
+3. Implement the `draw_christmas_tree(blocks)` function to return arrays like this (when `blocks == 4`):
     ```
     0 0 0 0 0 1 0 0 0 0 0
     0 0 0 0 1 2 1 0 0 0 0
@@ -127,3 +127,8 @@ https://classroom.github.com/a/obBDAwez
 
 - :exclamation: [Nested lists](https://learn.code.cool/codecool-graph/#/../pages/notebooks/nested-lists.html)
 - :exclamation: [On default arguments](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) in the documentation
+
+## Acceptance review
+
+You will need this only at review time, **after** completing the project.
+[Use this form](https://forms.gle/vYgUZybdUPeWzvHu6) to record the review you provide for your peer.
