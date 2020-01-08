@@ -74,7 +74,7 @@ def embroider(matrix, color_scheme):
 
 
 if __name__ == '__main__':
-    color_scheme = {0: ' ', 1: '*', 2: '.'}
+    color_scheme = {0: ' ', 1: '*', 2: '|'}
     embroider(draw_rectangle(15, 15, 2), color_scheme)
-    embroider(draw_triangle(10), color_scheme)
+    embroider(draw_triangle(15), color_scheme)
 
