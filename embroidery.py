@@ -147,7 +147,8 @@ def draw_circle(radius):
     i = 0
     b = 0
     width = (radius*2)+1
-    while i != width:
+    height = (radius*2)+1
+    while i != height:
         while b != width:
             matrix.append(0)
             b = b+1
@@ -181,8 +182,8 @@ def embroider(matrix, color_scheme):
 
 
 if __name__ == '__main__':
-    color_scheme = {0: ' ', 1: '.', 2: '|'}
-    embroider(draw_rectangle(15, 15, 2), color_scheme)
-    embroider(draw_triangle(15), color_scheme)
+    color_scheme = {0: ' ', 1: '.', 2: '*'}
+    embroider(draw_rectangle(5, 5, 1), color_scheme)
+    embroider(draw_triangle(5), color_scheme)
     embroider(draw_christmas_tree(4), color_scheme)
-    embroider(draw_circle(4), color_scheme)
+    embroider(draw_circle(5), color_scheme)
