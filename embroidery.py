@@ -156,7 +156,7 @@ def draw_circle(radius):
 
     line_count = 0
     a = 0
-    for x in matrix1:
+    while line_count != len(matrix1):
         a = 0
         while a != width:
             k = line_count-radius
@@ -181,8 +181,8 @@ def embroider(matrix, color_scheme):
 
 
 if __name__ == '__main__':
-    color_scheme = {0: ' ', 1: '.', 2: '*'}
+    color_scheme = {0: ' ', 1: '.', 2: '|'}
     embroider(draw_rectangle(15, 15, 2), color_scheme)
     embroider(draw_triangle(15), color_scheme)
     embroider(draw_christmas_tree(4), color_scheme)
-    embroider(draw_circle(8), color_scheme)
+    embroider(draw_circle(4), color_scheme)
