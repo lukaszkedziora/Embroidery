@@ -1,5 +1,3 @@
-from termcolor import colored, cprint
-
 def draw_rectangle(width, height, border=0):
     matrix = []
     matrix1 = []
@@ -67,6 +65,18 @@ def draw_triangle(height):
     return matrix1
 
 
+'''
+def draw_christmas_tree_2(blocks):
+    matrix1 = draw_triangle(4)
+
+    matrix2.append(matrix1)
+    matrix2 = matrix1[0:3]
+    print(matrix1)
+
+    return matrix2
+'''
+
+
 def draw_christmas_tree(blocks):
     matrix = []
     matrix1 = []
@@ -88,7 +98,7 @@ def draw_christmas_tree(blocks):
             i = i + 1
             matrix1.append(matrix[:])
         a = a + 1
-    
+
     # Draw trinagle
     x = 0
     x_1 = 0
@@ -128,10 +138,39 @@ def draw_christmas_tree(blocks):
             i = i + 1
         x_3 = x_3 + 3
         c = c + 1
-    
+
     return matrix1
 
 
+def draw_circle(radius):
+    matrix = []
+    matrix1 = []
+    i = 0
+    b = 0
+    width = (radius*2) + 1
+    while i != width:
+        while b != width:
+            matrix.append(0)
+            b = b+1
+        i = i + 1
+        matrix1.append(matrix[:])
+
+    line_count = 0
+    a = 0
+    for x in matrix1:
+        i = 1
+        a = 0
+        while a != width:
+            k = line_count-radius
+            p = a-radius
+            if k*k + p*p <= radius*radius:
+                matrix1[line_count][a] = 2
+            elif k*k + p*p <= (radius+1)*(radius+1):
+                matrix1[line_count][a] = 1
+            a = a + 1
+        i = i + 1
+        line_count = line_count + 1
+    return(matrix1)
 
 
 def embroider(matrix, color_scheme):
@@ -141,14 +180,10 @@ def embroider(matrix, color_scheme):
         print()
     print()
 
-    
-
-
 
 if __name__ == '__main__':
     color_scheme = {0: ' ', 1: '.', 2: '*'}
     embroider(draw_rectangle(15, 15, 2), color_scheme)
     embroider(draw_triangle(20), color_scheme)
     embroider(draw_christmas_tree(4), color_scheme)
-
-
+    embroider(draw_circle(10), color_scheme)
