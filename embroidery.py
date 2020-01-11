@@ -23,7 +23,7 @@ def draw_rectangle(width, height, border=0, border_color="yellow", fill_color="m
     return matrix1
 
 
-def draw_triangle(height, border_color="green", fill_color="blue"):
+def draw_triangle(height):
     matrix = []
     matrix1 = []
     i = 0
@@ -45,10 +45,10 @@ def draw_triangle(height, border_color="green", fill_color="blue"):
         i = 0
         i_2 = 0
         while i != height-counter_for_row:
-            matrix1[(height-list_changer)][i+counter_for_row] = (inside_content, fill_color)
+            matrix1[(height-list_changer)][i+counter_for_row] = inside_content
             i = i + 1
         while i_2 != height-counter_for_row:                # po połowie wypełnienie
-            matrix1[(height-list_changer)][height1+i_2] = (inside_content, fill_color)
+            matrix1[(height-list_changer)][height1+i_2] = inside_content
             i_2 = i_2 + 1
         counter_for_row = counter_for_row + 1
         list_changer = list_changer + 1
@@ -67,8 +67,19 @@ def draw_triangle(height, border_color="green", fill_color="blue"):
     return matrix1
 
 
+'''
+def draw_christmas_tree_2(blocks):
+    matrix1 = draw_triangle(4)
 
-def draw_christmas_tree(blocks, border_color="red", fill_color="green"):
+    matrix2.append(matrix1)
+    matrix2 = matrix1[0:3]
+    print(matrix1)
+
+    return matrix2
+'''
+
+
+def draw_christmas_tree(blocks):
     matrix = []
     matrix1 = []
     height = 3
@@ -89,7 +100,7 @@ def draw_christmas_tree(blocks, border_color="red", fill_color="green"):
             i = i + 1
             matrix1.append(matrix[:])
         a = a + 1
-    
+
     # Draw trinagle
     x = 0
     x_1 = 0
@@ -103,11 +114,11 @@ def draw_christmas_tree(blocks, border_color="red", fill_color="green"):
             i = i + 1
         if blocks > 1:
             while i_2 != width-(1+x_2):
-                matrix1[width-(1+x)][i_2+x_1] = (inside_content, fill_color)
+                matrix1[width-(1+x)][i_2+x_1] = inside_content
                 i_2 = i_2 + 1
         if blocks > 2:
             while i_3 != width-(2+x_2):
-                matrix1[width-(2+x)][i_3+x_1] = (inside_content, fill_color)
+                matrix1[width-(2+x)][i_3+x_1] = inside_content
                 i_3 = i_3 + 1
         x = x + 3
         x_1 = x_1 + 1
@@ -117,39 +128,72 @@ def draw_christmas_tree(blocks, border_color="red", fill_color="green"):
 
     i = 0
     while i != width:
-        matrix1[width][i] = (inside_content_2, border_color)
+        matrix1[width][i] = inside_content_2
         i = i + 1
     c = 0
     x_3 = 0
     for c in range(blocks):
         i = 0
         while i != height:
-            matrix1[width-(i+x_3)][i+c] = (inside_content_2, border_color)
-            matrix1[width-(i+x_3)][-1-(i+c)] = (inside_content_2, border_color)
+            matrix1[width-(i+x_3)][i+c] = inside_content_2
+            matrix1[width-(i+x_3)][-1-(i+c)] = inside_content_2
             i = i + 1
         x_3 = x_3 + 3
         c = c + 1
-    
     return matrix1
 
+
 def draw_circle(radius):
-    matrix = draw_rectangle(radius,radius)
-    return matrix
+    matrix = []
+    matrix1 = []
+    i = 0
+    b = 0
+    width_height = (radius*2)+3
+    while i != width_height:
+        while b != width_height:
+            matrix.append(0)
+            b = b+1
+        i = i + 1
+        matrix1.append(matrix[:])
+
+    line_count = 0
+    a = 0
+    while line_count != len(matrix1):
+        a = 0
+        while a != width_height:
+            k = line_count-(radius+1)
+            p = a-(radius+1)
+            if k*k + p*p <= radius*radius:
+                matrix1[line_count][a] = 2
+            elif k*k + p*p <= (radius+1)*(radius+1):
+                matrix1[line_count][a] = 1
+            a = a + 1
+        line_count = line_count + 1
+    return(matrix1)
+
+
+def embroider_color(matrix, color_scheme):
+    for row in matrix:
+        for cell in row:
+            print(colored(color_scheme[cell[0]], cell[1]), end='')      #dlaczego nawiasy takie? !!!!!!!!!!!
+        print()
+    print()
 
 
 def embroider(matrix, color_scheme):
     for row in matrix:
         for cell in row:
-            print(colored(color_scheme[cell[0]], cell[1]), end='')
+            print(color_scheme[cell], end='')
         print()
     print()
 
-
     
 if __name__ == '__main__':
-    color_scheme = {0: ' ', 1: '*', 2: '.', 3: '@'}
-    embroider(draw_rectangle(15, 15, 2, "cyan", "magenta"), color_scheme)
-    #embroider(draw_triangle(10), color_scheme)
-    #embroider(draw_christmas_tree(4, "cyan", "magenta"), color_scheme)
-    embroider(draw_circle(8), color_scheme)
-
+    color_scheme = {0: ' ', 1: '*', 2: '$'}
+    color_scheme1 = {0: ' ', 1: colored('*', "magenta"), 2: colored("$", "green")}
+    # embroider(draw_rectangle(5, 5, 1), color_scheme)
+    embroider_color(draw_rectangle(15, 15, 2, "cyan", "magenta"), color_scheme)
+    embroider(draw_triangle(5), color_scheme1)
+    embroider(draw_christmas_tree(5), color_scheme1)
+    embroider(draw_circle(10), color_scheme1)
+    
