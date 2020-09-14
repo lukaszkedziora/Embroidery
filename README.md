@@ -2,7 +2,7 @@
 
 The purpose of this small application is to print various embriodery-like shapes according to given parameters.     
 
-##Technology 
+## Technology 
 - Python3
 - Termcolor library
 
